@@ -23,6 +23,7 @@ except FileNotFoundError:
 class Settings():
     # Add Stop buttons at the bottom of the Session. Experimental
     # SESSION__STOP_BUTTONS = True
+    VELOCITY_ENABLED_MATRIX = bool(os.getenv("VELOCITY_ENABLED_MATRIX", "True"))
     PRO_SESSION_ON = bool(os.getenv("PRO_SESSION_ON", "False"))
     SESSION__STOP_BUTTONS = False
 

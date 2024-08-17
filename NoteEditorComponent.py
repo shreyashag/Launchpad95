@@ -2,6 +2,9 @@ from _Framework.ControlSurfaceComponent import ControlSurfaceComponent
 from _Framework.ButtonElement import ButtonElement
 import time
 
+from .Settings import Settings
+
+
 class NoteEditorComponent(ControlSurfaceComponent):
 
 	def __init__(self, stepsequencer = None, matrix = None, control_surface = None):
@@ -477,7 +480,7 @@ class NoteEditorComponent(ControlSurfaceComponent):
 
 	def _get_velocity_for_note_pressed(self, value: int):
 		# TODO: Shreyash Add additional logic to check if fixed velocity mode is enabled, it might be useful for others
-		if self._control_surface.has_velocity_sensitive_matrix_pads():
+		if self._control_surface.has_velocity_sensitive_matrix_pads() and Settings.VELOCITY_ENABLED_MATRIX:
 			velocity = value
 			self._control_surface.log_message("velocity sensitive, value is " + str(velocity))
 		else:
