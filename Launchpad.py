@@ -375,3 +375,6 @@ class Launchpad(ControlSurface):
 		self._note_repeat = NoteRepeatComponent(name='Note_Repeat')
 		self._note_repeat.set_enabled(False)
 		self._note_repeat.set_note_repeat(self._c_instance.note_repeat)
+
+	def has_velocity_sensitive_matrix_pads(self):
+		return self._lpx
