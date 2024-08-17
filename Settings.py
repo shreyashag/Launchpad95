@@ -1,7 +1,29 @@
+import os
+from pathlib import Path
+
+
+def load_env_file(file_path):
+    with open(file_path) as file:
+        for line in file:
+            # Remove comments and whitespace
+            line = line.strip()
+            if line and not line.startswith('#'):
+                # Split the line into key and value
+                key, value = line.split('=', 1)
+                # Set the environment variable
+                os.environ[key] = value
+
+
+# Try and load the env file present in the current directory
+try:
+    load_env_file(Path(__file__).parent.joinpath('.env'))
+except FileNotFoundError:
+    pass
 
 class Settings():
     # Add Stop buttons at the bottom of the Session. Experimental
     # SESSION__STOP_BUTTONS = True
+    PRO_SESSION_ON = bool(os.getenv("PRO_SESSION_ON", "False"))
     SESSION__STOP_BUTTONS = False
 
     # Link sessions between multiple launchpad95. Experimental
