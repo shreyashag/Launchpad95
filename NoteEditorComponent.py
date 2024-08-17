@@ -357,7 +357,7 @@ class NoteEditorComponent(ControlSurfaceComponent):
 				else:
 					time = self.quantization * (self._page * self.width * self.number_of_lines_per_note + y * self.width + x)
 					pitch = self._key_indexes[0]
-				velocity = self._velocity #setted by velocity button
+				velocity = self._get_velocity_for_note_pressed(value)
 				duration = self.quantization #setted by quantization button in StepSequencerComponent
 
 				# TODO: use new better way for editing clip
@@ -474,3 +474,12 @@ class NoteEditorComponent(ControlSurfaceComponent):
 				self._grid_back_buffer[self._current_page % self.width][i] = "StepSequencer.NoteEditor.CurrentPageMarkerPlay"
 			else:
 				self._grid_back_buffer[self._current_page % self.width][i] = "StepSequencer.NoteEditor.CurrentPageMarker"
+
+	def _get_velocity_for_note_pressed(self, value: int):
+		# TODO: Shreyash Add additional logic to check if fixed velocity mode is enabled, it might be useful for others
+		if self._control_surface.has_velocity_sensitive_matrix_pads():
+			velocity = value
+			self._control_surface.log_message("velocity sensitive, value is " + str(velocity))
+		else:
+			velocity = self._velocity  # setted by velocity button
+		return velocity
