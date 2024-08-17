@@ -47,7 +47,7 @@ class MainSelectorComponent(ModeSelectorComponent):
 		self._control_surface = control_surface
 		self._note_repeat = note_repeat
 		self._c_instance = c_instance
-		self._pro_session_on = False
+		self._pro_session_on = Settings.PRO_SESSION_ON
 		self._long_press = 500
 		self._last_session_mode_button_press = int(round(time.time() * 1000))
 		self._aux_scene = None
