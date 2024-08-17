@@ -25,6 +25,7 @@ class Settings():
     # SESSION__STOP_BUTTONS = True
     VELOCITY_ENABLED_MATRIX = bool(os.getenv("VELOCITY_ENABLED_MATRIX", "True"))
     PRO_SESSION_ON = bool(os.getenv("PRO_SESSION_ON", "False"))
+    FIXED_LENGTH_ENABLED = bool(os.getenv("FIXED_LENGTH_ENABLED", "False"))
     SESSION__STOP_BUTTONS = False
 
     # Link sessions between multiple launchpad95. Experimental

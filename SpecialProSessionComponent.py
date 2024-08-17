@@ -11,6 +11,8 @@ from _Framework import Task
 from _Framework.Util import in_range
 from _Framework.SubjectSlot import subject_slot_group
 import time
+
+from .Settings import Settings
 from .SpecialProSessionRecordingComponent import SpecialProSessionRecordingComponent
 from .SpecialSessionComponent import SpecialSessionComponent
 from .TargetTrackComponent import TargetTrackComponent
@@ -523,7 +525,7 @@ class SpecialProSessionComponent(SpecialSessionComponent):
 		self.song().add_session_record_listener(self._on_session_record_changed_in_live)
 		
 		self._fixed_length = 1
-		self._fixed_length_on = False
+		self._fixed_length_on = Settings.FIXED_LENGTH_ENABLED
 		
 		self._tap_color_index = 0
 		self._shift_color_index = 0
